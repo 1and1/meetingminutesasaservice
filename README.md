@@ -32,6 +32,25 @@ using XML Schema, for example
     $ xmllint --noout --schema mmaas.xsd config.xml
     config.xml.template validates
     $
+    
+#### Configuration documentation
+
+##### Element possibleAttendees
+
+The element contains the set of possible meeting minute writers.
+
+##### Element attendee
+
+The element defines a single meeting minute writer. There are the following attributes:
+
+* id: An unique identifier that will be referenced in the XML file. Can't be changed (String).
+* name: A human readable identifier to be displayed for the attendee (String).
+* enabled: Whether this entry shall be displayed as a possible meeting minute writer at all (boolean).
+* count: The count of already written meeting minutes. This counter is used for maintaining the fairness to get an equally distributed meeting minute writing rate. If you need to add a new meeting minute writer, you need to put an appropriate start value here (integer).
+
+#### Element historyLogs
+
+Contains a log of who wrote when the meeting minutes. This list is only read when you call the command with the reindex parameter.
 
 ### Running
 
