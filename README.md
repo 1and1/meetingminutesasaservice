@@ -7,9 +7,9 @@ defined in an XML configuration file.
 
 ### Prerequisites
 
-Prerequisites is Java 8 for running it and Maven for building it.
-It can run on Linux and Windows. The start wrapper script works
-on Windows only with Cygwin.
+Prerequisites is Java 8 for running it and [Maven](https://maven.apache.org/) for building it.
+It can run on Linux and Windows. One start wrapper script (mmaas.sh) works
+on Linux. On Windows it only works with Cygwin (mmaas.bat).
 
 ### Building
 
@@ -33,7 +33,7 @@ using XML Schema, for example
     config.xml.template validates
     $
     
-#### Configuration documentation
+#### XML Configuration documentation
 
 An example of the configuration can be found [here](https://raw.githubusercontent.com/1and1/meetingminutesasaservice/master/src/main/resources/config.xml.template).
 
@@ -72,3 +72,6 @@ There's a github repository where the development is done
     
 Feel free to report issues and post pull requests.
 
+### License
+
+The software is licensed under the [Apache license 2.0](http://www.apache.org/licenses/LICENSE-2.0).
