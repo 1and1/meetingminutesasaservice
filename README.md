@@ -35,6 +35,8 @@ using XML Schema, for example
     
 #### Configuration documentation
 
+An example of the configuration can be found [here](https://raw.githubusercontent.com/1and1/meetingminutesasaservice/master/src/main/resources/config.xml.template).
+
 ##### Element possibleAttendees
 
 The element contains the set of possible meeting minute writers.
