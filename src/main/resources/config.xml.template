@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ï»¿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <meetingMinutesAsAService xmlns="http://www.1und1.de/sysdev/mmas.xml">
     <possibleAttendees>
         <attendee id="john" name="John Johnson" enabled="true" count="0"/>
         <attendee id="peter" name="Peter Peterson" enabled="true" count="0"/>
-        <attendee id="sören" name="Sören Sörenson" enabled="true" count="0"/>
+        <attendee id="sÃ¶ren" name="SÃ¶ren SÃ¶renson" enabled="true" count="0"/>
         <attendee id="sven" name="Sven Svenson" enabled="true" count="0"/>
     </possibleAttendees>
     <historyLogs>
