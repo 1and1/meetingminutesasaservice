@@ -5,43 +5,43 @@ defined in an XML configuration file.
 
 ## Operations
 
-### Prerequisites
+### Installation
 
-Prerequisites is Java 8 for running it and [Maven](https://maven.apache.org/) for building it.
-It can run on Linux and Windows. One start wrapper script (mmaas.sh) works
-on Linux. On Windows it only works with Cygwin (mmaas.bat).
+Install one of the Debian / Fedora packages from the [releases](https://github.com/1and1/meetingminutesasaservice/releases)
+section.
 
-### Building
-
-Build it with Maven
-
-    MeetingMinutesAsAService$ mvn clean package
+After that, you have a new command installed that is called "meetingminutesasaservice".
     
-### Installing
-
-After building you have a tar ball in your target directory. You
-can copy and extract this archive whereever you want.
-
 ### Configuring
 
 The software comes with a template configuration file named
-config.xml.template located in the config directory.
-You can edit this file and later check it
+config.xml.template installed in the directory "/usr/share/doc/meetingminutesasaservice/".
+You can copy and edit this file and later check it
 using XML Schema, for example
 
     $ xmllint --noout --schema mmaas.xsd config.xml
     config.xml.template validates
     $
+
+### Running
+
+The software is started with the Shell wrapper script "meetingminutesasaservice":
+
+    $ meetingminutesasaservice -f config.xml 
+
+Where config.xml is the config file. 
+Note that the config file will get updated with the current
+winners.
     
-#### XML Configuration documentation
+### XML Configuration documentation
 
 An example of the configuration can be found [here](https://raw.githubusercontent.com/1and1/meetingminutesasaservice/master/src/main/resources/config.xml.template).
 
-##### Element possibleAttendees
+#### Element possibleAttendees
 
 The element contains the set of possible meeting minute writers.
 
-##### Element attendee
+#### Element attendee
 
 The element defines a single meeting minute writer. There are the following attributes:
 
@@ -54,16 +54,6 @@ The element defines a single meeting minute writer. There are the following attr
 
 Contains a log of who wrote when the meeting minutes. This list is only read when you call the command with the reindex parameter.
 
-### Running
-
-The software is started with the Shell wrapper script "mmaas.sh":
-
-    $ bin/mmaas.sh -f config.xml 
-
-Where config.xml is the config file. 
-Note that the config file will get updated with the current
-winners.
-
 ## Development
 
 There's a github repository where the development is done
@@ -71,6 +61,12 @@ There's a github repository where the development is done
     https://github.com/1and1/meetingminutesasaservice
     
 Feel free to report issues and post pull requests.
+
+### Building
+
+Build it with Maven
+
+    MeetingMinutesAsAService$ mvn clean package
 
 ### License
 
