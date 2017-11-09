@@ -1,7 +1,15 @@
 # Meeting Minutes As A Service
 
 Choses a meeting minute writer from a set of writers
-defined in an XML configuration file.
+defined in an XML configuration file. An example session can be seen here:
+
+![Example session](https://raw.githubusercontent.com/1and1/meetingminutesasaservice/master/images/example_session.png "Example session")
+
+The following is happening:
+* Peter, John and Sören all have 1 turns, Sven has 2 turns. This means Peter, John and Sören are in the set of the
+  next winners.
+* After acknowleding the set of candidates with RETURN, Sören is chosen to be the winner.
+* The winner is acknowledged again and the XML file is updated on disk.
 
 ## Operations
 
