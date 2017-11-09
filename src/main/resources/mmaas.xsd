@@ -1,1 +1,72 @@
-../xsd/mmaas.xsd
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sn="http://www.1und1.de/sysdev/mmas.xml"
+            targetNamespace="http://www.1und1.de/sysdev/mmas.xml" elementFormDefault="qualified">
+
+    <xsd:element name="meetingMinutesAsAService">
+		
+        <xsd:complexType>
+            <xsd:annotation>
+                <xsd:documentation>
+                </xsd:documentation>
+            </xsd:annotation>
+            <xsd:sequence>
+                <xsd:element name="possibleAttendees" type="sn:AttendeeListType" minOccurs="0" >
+                    <xsd:key name="attendeeId">
+                        <xsd:selector xpath="./sn:attendee" />
+                        <xsd:field xpath="@id" />
+                    </xsd:key>
+                </xsd:element>
+                <xsd:element name="historyLogs" type="sn:HistoryListType" />
+            </xsd:sequence>
+        </xsd:complexType>
+		
+        <xsd:keyref name="logref" refer="sn:attendeeId">
+            <xsd:selector xpath="sn:historyLogs/sn:log"/>
+            <xsd:field xpath="@attendee-ref"/>
+        </xsd:keyref>
+    </xsd:element>
+
+    <xsd:complexType name="AttendeeListType">
+        <xsd:annotation>
+            <xsd:documentation>
+                A list of attendees
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="attendee" type="sn:AttendeeType" maxOccurs="unbounded" minOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+	
+    <xsd:complexType name="AttendeeType">
+        <xsd:annotation>
+            <xsd:documentation>
+                A person
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+        <xsd:attribute name="name" type="xsd:string" use="required" />
+        <xsd:attribute name="enabled" type="xsd:boolean" default="true" />
+        <xsd:attribute name="count" type="xsd:nonNegativeInteger" default="0" />
+    </xsd:complexType>
+	
+    <xsd:complexType name="HistoryListType">
+        <xsd:annotation>
+            <xsd:documentation>
+                List of protocol logs
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="log" type="sn:LogType" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="LogType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Who wrote protocol when
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="attendee-ref" type="xsd:string" use="required" />
+        <xsd:attribute name="when" type="xsd:dateTime" use="required" />
+    </xsd:complexType>	
+</xsd:schema>
