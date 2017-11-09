@@ -10,12 +10,12 @@ defined in an XML configuration file.
 Install one of the Debian / Fedora packages from the [releases](https://github.com/1and1/meetingminutesasaservice/releases)
 section.
 
-After that, you have a new command installed that is called "meetingminutesasaservice".
+After that, you have a new command installed that is called `meetingminutesasaservice`.
     
 ### Configuring
 
 The software comes with a template configuration file named
-config.xml.template installed in the directory "/usr/share/doc/meetingminutesasaservice/".
+config.xml.template installed in the directory `/usr/share/doc/meetingminutesasaservice/`.
 You can copy and edit this file and later check it
 using XML Schema, for example
 
@@ -25,7 +25,7 @@ using XML Schema, for example
 
 ### Running
 
-The software is started with the Shell wrapper script "meetingminutesasaservice":
+The software is started with the Shell wrapper script `meetingminutesasaservice`:
 
     $ meetingminutesasaservice -f config.xml 
 
