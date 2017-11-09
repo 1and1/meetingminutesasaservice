@@ -1,0 +1,108 @@
+packageName: meetingminutesasaservice # name of the project package
+buildCommand: mvn --batch-mode clean package
+cleanCommand: mvn --batch-mode clean
+author: # who's the main author of the program TBD: author/maintainer/etc
+  name: Stephan Fuhrmann
+  email: stephan.fuhrmann@1und1.de
+maintainer: # who's the package maintainer of the program
+  name: Stephan Fuhrmann
+  email: stephan.fuhrmann@1und1.de
+shortSummary: XML-based scheduling for writing meeting minutes. # short summary of package content
+longDescription: # long description of package content
+- Simple command line driven tool to have a completely fair
+- scheduling whos turn it is to write the meeting minutes.
+homepage: http://github.com/1and1/meetingminutesasaservice # homepage of the project
+license: APACHE_20 # license the project is in
+targets: # which platforms to build an archive for
+- centos_7
+- debian_stretch
+- archlinux
+git:
+  gitUrl: https://github.com/1and1/meetingminutesasaservice.git
+  branch: master
+redhat:
+  group: Utilities/System
+  relations:
+    depends:
+    - pkg: jre
+      op: ge
+      version: 1.8.0
+    build_depends:
+    - pkg: java-1.8.0-openjdk-headless
+      op: ge
+      version: 1.8.0
+    - pkg: maven
+debian:
+  priority: optional
+  section: devel
+  architecture: all
+  relations:
+    depends:
+    - pkg: java8-runtime-headless
+    build_depends:
+    - pkg: debhelper
+      op: ge
+      version: 10
+    - pkg: openjdk-8-jdk-headless
+    - pkg: maven
+archlinux:
+  architecture: any
+  relations:
+    depends:
+    - pkg: java-runtime-headless
+      op: eq
+      version: 8
+    build_depends:
+    - pkg: jdk8-openjdk
+    - pkg: maven
+versions:
+- version: 1.2.1
+  release: 1
+  date: 2017-11-09T15:30:00+01:00
+  changes:
+  - Initial version
+# Where to install what on the target system?
+install:
+- copy:
+    from: target/meetingminutesasaservice-1.2.1-SNAPSHOT-jar-with-dependencies.jar
+    to: /usr/share/meetingminutesasaservice/meetingminutesasaservice-jar-with-dependencies.jar
+    owner: root
+    group: root
+    mode: rw-r--r--
+- copy:
+    from: src/main/package/meetingminutesasaservice
+    to: /usr/bin/meetingminutesasaservice
+    owner: root
+    group: root
+    mode: rwxr-xr-x
+- run:
+    command: gzip README.md
+- copy:
+    from: README.md.gz
+    to: /usr/share/doc/meetingminutesasaservice/README.md.gz
+    owner: root
+    group: root
+    mode: rw-r--r--
+- run:
+    command: gzip src/main/xsd/mmaas.xsd
+- copy:
+    from: src/main/xsd/mmaas.xsd.gz
+    to: /usr/share/doc/meetingminutesasaservice/mmaas.xsd.gz
+    owner: root
+    group: root
+    mode: rw-r--r--
+- run:
+    command: gzip src/main/resources/config.xml.template
+- copy:
+    from: src/main/resources/config.xml.template.gz
+    to: /usr/share/doc/meetingminutesasaservice/config.xml.template.gz
+    owner: root
+    group: root
+    mode: rw-r--r--
+- copy:
+    from: AUTHORS
+    to: /usr/share/doc/meetingminutesasaservice/AUTHORS
+    owner: root
+    group: root
+    mode: rw-r--r--
+
